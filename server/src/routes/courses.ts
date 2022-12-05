@@ -5,6 +5,11 @@ import Course from "../models/Course";
 
 const router = express.Router();
 
+router.get('/',async (req:Request,res:Response)=>{
+    const courses = await Course.find();
+    res.json(courses);
+});
+
 router.post('/',async (req:Request,res:Response)=>{
     console.log(req.body);
     const newCourse = new Course({
