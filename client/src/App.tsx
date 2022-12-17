@@ -9,6 +9,10 @@ import './App.css'
 function App() {
   // const [courses,setCourses]= useState<TCourse[]>([]);
   const [code,setCode] = useState('');
+  const [branch,setBranch] = useState('');
+  const [session,setSession] = useState('');
+  const [semester,setSemester] = useState('');
+  
 
   async function handleCreateCourse(e:React.FormEvent){
     e.preventDefault();
@@ -16,12 +20,18 @@ function App() {
       method:'POST',
       body:JSON.stringify({
         code,
+        branch,
+        session,
+        semester,
       }),
       headers:{
         "Content-Type":"application/json",
       },
     });
     setCode("");
+    setBranch("");
+    setSemester("");
+    setSession("");
   }
 
   // useEffect(()=>{
@@ -50,8 +60,35 @@ function App() {
             setCode(e.target.value);
          }}
         />
+        <label htmlFor="course-branch">Course Branch</label>
+        <input 
+         id="course-branch"
+         value={branch}
+         onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+            setBranch(e.target.value);
+         }}
+        />
+        <label htmlFor="course-session">Course Session</label>
+        <input 
+         id="course-session"
+         value={session}
+         onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+            setSession(e.target.value);
+         }}
+        />
+        <label htmlFor="course-semester">Course Semester</label>
+        <input 
+         id="course-semester"
+         value={semester}
+         onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+            setSemester(e.target.value);
+         }}
+        />
+        
         <button>Create Course</button>
       </form>
+
+      
     </div>
   )
 }

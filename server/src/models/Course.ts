@@ -6,12 +6,17 @@ const Schema = mongoose.Schema;
 const CourseSchema = new Schema({
     // courseId: ObjectId,
     code:String,
-    // branch:String,
-    // session:Number,
-    // semester:Number,
-    // createdAt:Date,
+    branch:String,
+    session:String,
+    semester:Number,
+    createdAt:Date,
+    subCode:String,
+    subName:String,
+    unitTopic:String,
+    books:String,
+    lecTopic:String,
     // updatedAt:Date,
-    // updatedBy:Number,
+   // updatedBy:Number,
 });
 
 const CourseModel = mongoose.model('Course',CourseSchema);
