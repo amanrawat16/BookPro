@@ -22,12 +22,22 @@ router.post('/',async (req:Request,res:Response)=>{
         subName:req.body.data.subName,
         unitTopic:req.body.data.unitTopic,
         books:req.body.data.books,
-        lecTopic:req.body.data.lecturesTopic,
+        lecTopic:req.body.data.lecTopic,
         // updatedAt:req.body.updatedAt,
         //updatedBy
     });
     const createdCourse = await newCourse.save();
     res.json(createdCourse);
+});
+
+router.delete('/:courseId',async (req:Request,res:Response)=>{
+    const courseId = req.params.courseId;
+
+    await Course.findByIdAndDelete(courseId);
+
+    res.json({
+        message:"successfully deleted entry",
+    });
 });
 
 module.exports = router;
